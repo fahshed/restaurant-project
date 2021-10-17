@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
   position: fixed;
+  z-index: 1000;
   top: 0;
   width: 100%;
   box-shadow: 0 0px 10px rgb(0 0 0 / 0.3);
@@ -13,7 +14,7 @@
 }
 
 .container > *:hover {
-  background-color: goldenrod;
+  background-color: #daa520;
   /* -webkit-transition: background-color 500ms linear;
   -ms-transition: background-color 500ms linear; */
   transition: background-color 500ms linear;

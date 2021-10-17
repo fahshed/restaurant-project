@@ -1,9 +1,17 @@
 .card {
-  height: 300px;
-  width: 300px;
-  border-radius: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  padding: 25px;
+  border-radius: 25px;
+  margin-bottom: 25px;
   box-shadow: 0 5px 12px rgb(0 0 0 / 0.7);
+  background-color: white;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    padding: 15px;
+    border-radius: 15px;
+  }
 }

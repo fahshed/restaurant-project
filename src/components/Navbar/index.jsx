@@ -12,7 +12,7 @@ export default function Navbar() {
       </div>
       <div>
         <Link to="/menu" style={{ textDecoration: "none", color: "white" }}>
-          Menu
+          Pizza
         </Link>
       </div>
       <div>
