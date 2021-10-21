@@ -4,10 +4,14 @@ import { Typography, Button } from "@mui/material";
 
 import useWidth from "../../hooks/useWidth";
 
-export default function Card({ itemName, itemDescription, price, imageName }) {
+export default function Card({
+  itemName,
+  calory,
+  itemDescription,
+  price,
+  imageName,
+}) {
   const screenWidth = useWidth();
-
-  console.log(screenWidth);
 
   const imageDimension = screenWidth === "xs" ? "100px" : "200px";
 
@@ -22,14 +26,20 @@ export default function Card({ itemName, itemDescription, price, imageName }) {
           alignItems: screenWidth === "xs" ? "space-between" : "flex-start",
         }}
       >
-        <Typography
-          variant={screenWidth === "xs" ? "h6" : "h4"}
-          marginBottom="10px"
-        >
-          {itemName}
-        </Typography>
+        <div>
+          <Typography variant={screenWidth === "xs" ? "h6" : "h4"}>
+            {itemName}
+          </Typography>
 
-        <Typography variant={screenWidth === "xs" ? "body2" : "h6"}>
+          <Typography variant={screenWidth === "xs" ? "body2" : "body1"}>
+            {calory} Cal
+          </Typography>
+        </div>
+
+        <Typography
+          variant={screenWidth === "xs" ? "body2" : "h6"}
+          color="#808080"
+        >
           {itemDescription}
         </Typography>
 

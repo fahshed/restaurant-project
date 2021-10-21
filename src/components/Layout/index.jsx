@@ -9,8 +9,8 @@ export default function Layout({ children, imageName }) {
         backgroundAttachment: "fixed",
       }}
     >
-      <Navbar />
-      <div style={{ paddingTop: 120 }}>{children}</div>
+      <Navbar page={imageName} />
+      <div style={{ paddingTop: "10vh" }}>{children}</div>
     </div>
   );
 }
