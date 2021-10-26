@@ -46,6 +46,9 @@ export default function Navbar({ page }) {
       <Link to="/about">
         <div style={{ borderBottom: `2px solid ${color[5]}` }}>About</div>
       </Link>
+      <Link to="/checkout">
+        <div style={{ borderBottom: `2px solid ${color[5]}` }}>Checkout</div>
+      </Link>
     </div>
   );
 }

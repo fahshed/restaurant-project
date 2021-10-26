@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Home, Pizza, Burger, About, Dessert, Indian } from "./pages";
+import { Home, Pizza, Burger, About, Dessert, Indian, Checkout } from "./pages";
 import { Menu } from "./components";
 
 function App() {
@@ -24,6 +24,9 @@ function App() {
         </Route>
         <Route exact path="/about">
           <About />
+        </Route>
+        <Route exact path="/checkout">
+          <Checkout />
         </Route>
       </Switch>
     </Router>
