@@ -3,6 +3,8 @@ import Card from "../../components/Card";
 import { Typography } from "@mui/material";
 
 export default function Burger() {
+  window.scrollTo(0, 0);
+
   return (
     <div>
       <div

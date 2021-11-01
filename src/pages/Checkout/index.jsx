@@ -1,10 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import { Grid, Typography, TextField, styled, Button } from "@mui/material";
+import {
+  Grid,
+  Typography,
+  TextField,
+  styled,
+  Button,
+  createTheme,
+  ThemeProvider,
+} from "@mui/material";
 
 import { Layout, OrderCard } from "../../components";
 
 import "./style.css";
+
+const customTheme = createTheme({
+  palette: {
+    mode: "dark",
+    primary: {
+      main: "#daa520",
+      light: "#daa520",
+      dark: "#daa520",
+    },
+  },
+});
 
 export default function Checkout() {
   const [itemCounts, setItemCounts] = useState({
@@ -13,6 +32,20 @@ export default function Checkout() {
     three: 1,
     four: 1,
   });
+
+  const [emailError, setEmailError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
+
+  const validateEmail = (email) => {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    setEmailError(!re.test(String(email).toLowerCase()));
+  };
+
+  const validatePhone = (phone) => {
+    const re = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
+    setPhoneError(!re.test(String(phone)));
+  };
 
   const subTotal =
     Math.round(
@@ -25,17 +58,22 @@ export default function Checkout() {
   const tax = subTotal * 0.075;
   const total = subTotal + tax + 7;
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <Layout imageName="home-back.jpg">
+    <Layout imageName="checkout-back.jpg">
       <div style={{ minHeight: "90vh" }}>
         <Grid container justifyContent="center">
           <Grid item lg={6} xs={11}>
-            <div style={{ backgroundColor: "white", padding: 15 }}>
+            <div style={{ padding: 15, background: "rgba(0, 0, 0,  .7)" }}>
               <Typography
                 variant="h4"
                 color="#daa520"
                 marginBottom="20px"
                 style={{ textShadow: "1px 1px #000" }}
+                align="center"
               >
                 Order Summery
               </Typography>
@@ -137,31 +175,41 @@ export default function Checkout() {
                 color="#daa520"
                 marginBottom="20px"
                 marginTop="20px"
+                align="center"
                 style={{ textShadow: "1px 1px #000" }}
               >
                 Your Information
               </Typography>
 
-              <CssTextField
-                fullWidth
-                style={{ marginBottom: 20 }}
-                label="Name"
-              />
-              <CssTextField
-                fullWidth
-                style={{ marginBottom: 20 }}
-                label="Address"
-              />
-              <CssTextField
-                fullWidth
-                style={{ marginBottom: 20 }}
-                label="Phone Number"
-              />
-              <CssTextField
-                fullWidth
-                style={{ marginBottom: 20 }}
-                label="Email"
-              />
+              <ThemeProvider theme={customTheme}>
+                <CssTextField
+                  fullWidth
+                  style={{ marginBottom: 20 }}
+                  label="Name"
+                />
+                <CssTextField
+                  fullWidth
+                  style={{ marginBottom: 20 }}
+                  label="Address"
+                />
+                <CssTextField
+                  placeholder="XXX-XXX-XXXX"
+                  fullWidth
+                  style={{ marginBottom: 20 }}
+                  label="Phone Number"
+                  onChange={(e) => validatePhone(e.target.value)}
+                  error={phoneError}
+                  helperText={phoneError ? "Invalid or No Phone Number" : ""}
+                />
+                <CssTextField
+                  fullWidth
+                  style={{ marginBottom: 20 }}
+                  label="Email"
+                  onChange={(e) => validateEmail(e.target.value)}
+                  error={emailError}
+                  helperText={emailError ? "Invalid or No Email" : ""}
+                />
+              </ThemeProvider>
 
               <div style={{ display: "flex", justifyContent: "center" }}>
                 <Button
@@ -181,15 +229,12 @@ export default function Checkout() {
 }
 
 const CssTextField = styled(TextField)({
-  "& label.Mui-focused": {
-    color: "#daa520",
-  },
-  "& .MuiInput-underline:after": {
-    borderBottomColor: "#daa520",
+  "& label.Mui-error": {
+    color: "red",
   },
   "& .MuiOutlinedInput-root": {
-    "&.Mui-focused fieldset": {
-      borderColor: "#daa520",
+    "&.Mui-error fieldset": {
+      borderColor: "red",
     },
   },
 });

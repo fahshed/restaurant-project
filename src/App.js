@@ -1,6 +1,15 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Home, Pizza, Burger, About, Dessert, Indian, Checkout } from "./pages";
+import {
+  Home,
+  Pizza,
+  Burger,
+  About,
+  Dessert,
+  Indian,
+  Checkout,
+  Booking,
+} from "./pages";
 import { Menu } from "./components";
 
 function App() {
@@ -22,11 +31,14 @@ function App() {
         <Route exact path="/dessert">
           <Menu pageBackground="dessert-back.jpg" pageContent={<Dessert />} />
         </Route>
+        <Route exact path="/checkout">
+          <Checkout />
+        </Route>
         <Route exact path="/about">
           <About />
         </Route>
-        <Route exact path="/checkout">
-          <Checkout />
+        <Route exact path="/booking">
+          <Booking />
         </Route>
       </Switch>
     </Router>

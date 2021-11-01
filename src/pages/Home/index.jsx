@@ -1,4 +1,5 @@
 import { Grid, Typography, Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 import { Layout } from "../../components";
 import useWidth from "../../hooks/useWidth";
@@ -6,28 +7,34 @@ import useWidth from "../../hooks/useWidth";
 export default function Home() {
   const screenWidth = useWidth();
 
+  window.scrollTo(0, 0);
+
   return (
     <Layout imageName="home-back.jpg">
-      <div style={{ minHeight: "90vh" }}>
+      <div
+        style={{
+          height: "80vh",
+          display: "flex",
+          alignItems: "center",
+          paddingTop: "5vh",
+        }}
+      >
         <Grid
           container
           justifyContent="center"
           alignItems="center"
           style={{
-            minHeight: "60vh",
-            paddingTop: "20px",
-            paddingBottom: "20px",
+            paddingTop: "50px",
+            paddingBottom: "50px",
             background: "rgba(0, 0, 0,  .5)",
           }}
         >
           <Grid item lg={5} xs={11}>
-            <Typography
-              variant={screenWidth === "xs" ? "h2" : "h1"}
-              color="#daa520"
-              style={{ textShadow: "3px 3px #000" }}
-            >
-              Taj Mahal
-            </Typography>
+            <img
+              src="images/gold-logo.svg"
+              alt="logo"
+              height={screenWidth === "xs" ? "80px" : "150px"}
+            />
             <Typography
               variant="h5"
               color="white"
@@ -64,6 +71,8 @@ export default function Home() {
               variant="contained"
               style={{ backgroundColor: "#daa520" }}
               size="large"
+              component={Link}
+              to="/booking"
             >
               Book a table
             </Button>

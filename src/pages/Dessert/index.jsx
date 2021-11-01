@@ -3,6 +3,8 @@ import { Typography } from "@mui/material";
 import Card from "../../components/Card";
 
 export default function Dessert() {
+  window.scrollTo(0, 0);
+
   return (
     <div>
       <div
