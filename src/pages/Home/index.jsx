@@ -48,7 +48,9 @@ export default function Home() {
             </Typography>
           </Grid>
 
-          <Grid item lg={1} xs={0}></Grid>
+          {screenWidth !== "xs" &&
+            screenWidth !== "sm" &&
+            screenWidth !== "md" && <Grid item lg={1}></Grid>}
 
           <Grid item lg={4} xs={11}>
             <Typography
