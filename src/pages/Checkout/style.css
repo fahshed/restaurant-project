@@ -1,0 +1,31 @@
+ul.leaders {
+  padding: 0;
+  overflow-x: hidden;
+  list-style: none;
+  font-size: large;
+  line-height: 25pt;
+  color: white;
+  background-color: black;
+}
+
+ul.leaders li:before {
+  float: left;
+  width: 0;
+  white-space: nowrap;
+  content: ". . . . . . . . . . . . . . . . . . . . . . . . . . "
+    ". . . . . . . . . . . . . . . . . . . . . . . . . . "
+    ". . . . . . . . . . . . . . . . . . . . . . . . . . "
+    ". . . . . . . . . . . . . . . . . . . . . . . . . . ";
+}
+
+ul.leaders span:first-child {
+  padding-right: 0.33em;
+  background: black;
+}
+
+ul.leaders span + span {
+  float: right;
+  padding-left: 0.33em;
+
+  background: black;
+}
